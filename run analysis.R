@@ -236,4 +236,7 @@ tail(X_means_and_std_test_and_train_average_by_subject_and_activity_mat,12)
 
 ## write tidy data into file
 write.table(X_means_and_std_test_and_train_average_by_subject_and_activity_mat, file = "tidy_data_means_and_std_average.txt")
+## write so it can be entered in the site
+write.table(X_means_and_std_test_and_train_average_by_subject_and_activity_mat, file = "tidy_data_means_and_std_average.txt", row.name=FALSE)
+
 
