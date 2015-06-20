@@ -1,0 +1,318 @@
+ ---
+title: "Codebook for Coursera Getting and Cleaning Data Project"
+author: "Mark Johns"
+date: "June 20, 2015"
+output:
+  html_document:
+    keep_md: yes
+---
+ 
+## Project Description
+Create a tidy data file from the datasets provided. The tidy data must contain the average
+of each mean and standard deviation measurement variable for each activity and each subject.
+You will be required to submit: 1) a tidy data set as described below tidy_data_means_and_std_average, 
+2) a link to a Github repository with your script for performing the analysis run_analysis, and 
+3) a code book that describes the variables, the data, and any transformations or work that you 
+performed to clean up the data called CodeBook.md. You should also include a README.md in the repo with your scripts.
+This repo explains how all of the scripts work and how they are connected.  
+
+ 
+##Study design and data processing
+ 
+###Collection of the raw data
+
+Description of how the data was collected.
+
+Text provided by the authors of the study -- start
+  
+ Feature Selection in the original data
+=======================================
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details. 
+
+For each record it is provided:
+======================================
+
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment.
+
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial 
+raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) 
+were captured at a constant rate of 50 Hz. Then they were filtered using a median filter 
+and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. 
+Similarly, the acceleration signal was then separated into body and gravity acceleration signals 
+(tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner 
+frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to 
+obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these 
+three-dimensional signals were calculated using the Euclidean norm 
+(tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing 
+fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. 
+(Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+Text provided by the authors of the study -- end 
+ 
+
+ 
+##Creating the tidy data file
+ 
+###Guide to create the tidy data file
+
+Run the run_analysis.R script in the same directory that contains the original project files. 
+Include the appropriate packages. Please see Readme file.
+
+###Cleaning of the data
+
+The R script called run_analysis.R that does the following. 
+			1	Merges the training and the test sets to create one data set.
+			2	Extracts only the measurements on the mean and standard deviation for each measurement. 
+			3	Uses descriptive activity names to name the activities in the data set.
+			4	Appropriately labels the data set with descriptive variable names.
+			5	From the data set in step 4, creates a second, independent tidy data set with the average
+			    of each variable for each activity and each subject.
+ 
+ 
+##Description of the variables in the tiny_data.txt file
+General description of the file including:
+ - Dimensions of the dataset 225 KB
+ - Summary of the data  The values in the tidy data set are the average per activity and per subject of the 
+ 	mean and standard deviation variables (included in the original dataset provided for the project)
+ - Variables present in the dataset 
+ 
+ 
+###Variable 1 (repeat this section for all variables in the dataset)
+Short description of what the variable describes.
+ 
+
+ 
+ 
+ Variaible name
+ "x"
+###"1"           "tBodyAcc.mean...X"              average value by activity and subject of the mean of the body acceleration 3-axial signals in the X direction in the time domain
+###"2"           "tBodyAcc.mean...Y"              average value by activity and subject of the mean of the body acceleration 3-axial signals in the Y direction in the time domain
+###"3"           "tBodyAcc.mean...Z"              average value by activity and subject of the mean of the body acceleration 3-axial signals in the Z direction in the time domain
+###"4"           "tBodyAcc.std...X"               average value by activity and subject of the standard deviation of the body acceleration 3-axial signals in the X direction in the time domain
+###"5"           "tBodyAcc.std...Y"               average value by activity and subject of the standard deviation of the body acceleration 3-axial signals in the Y direction in the time domain
+###"6"           "tBodyAcc.std...Z"               average value by activity and subject of the standard deviation of the body acceleration 3-axial signals in the Z direction in the time domain
+###"7"           "tGravityAcc.mean...X"           average value by activity and subject of the mean of the gravity acceleration 3-axial signals in the X direction in the time domain
+###"8"           "tGravityAcc.mean...Y"           average value by activity and subject of the mean of the gravity acceleration 3-axial signals in the Y direction in the time domain
+###"9"           "tGravityAcc.mean...Z"           average value by activity and subject of the mean of the gravity acceleration 3-axial signals in the Z direction in the time domain
+###"10"           "tGravityAcc.std...X"           average value by activity and subject of the standard deviation of the gravity acceleration 3-axial signals in the X direction in the time domain
+###"11"           "tGravityAcc.std...Y"           average value by activity and subject of the standard deviation of the gravity acceleration 3-axial signals in the Y direction in the time domain
+###"12"           "tGravityAcc.std...Z"           average value by activity and subject of the standard deviation of the gravity acceleration 3-axial signals in the Z direction in the time domain
+###"13"           "tBodyAccJerk.mean...X"         average value by activity and subject of the mean of thejerk of the body acceleration 3-axial signals in the X direction in the time domain
+###"14"           "tBodyAccJerk.mean...Y"         average value by activity and subject of the mean of thejerk of the body acceleration 3-axial signals in the Y direction in the time domain
+###"15"           "tBodyAccJerk.mean...Z"         average value by activity and subject of the mean of thejerk of the body acceleration 3-axial signals in the Z direction in the time domain
+###"16"           "tBodyAccJerk.std...X"          average value by activity and subject of the standard deviation of thejerk of the body acceleration 3-axial signals in the X direction in the time domain
+###"17"           "tBodyAccJerk.std...Y"          average value by activity and subject of the standard deviation of thejerk of the body acceleration 3-axial signals in the Y direction in the time domain
+###"18"           "tBodyAccJerk.std...Z"          average value by activity and subject of the standard deviation of thejerk of the body acceleration 3-axial signals in the Z direction in the time domain
+###"19"           "tBodyGyro.mean...X"            average value by activity and subject of the mean of the body angular velocity 3-axial signals in the X direction in the time domain
+###"20"           "tBodyGyro.mean...Y"            average value by activity and subject of the mean of the body angular velocity 3-axial signals in the Y direction in the time domain
+###"21"           "tBodyGyro.mean...Z"            average value by activity and subject of the mean of the body angular velocity 3-axial signals in the Z direction in the time domain
+###"22"           "tBodyGyro.std...X"             average value by activity and subject of the standard deviation of the body angular velocity 3-axial signals in the X direction in the time domain
+###"23"           "tBodyGyro.std...Y"             average value by activity and subject of the standard deviation of the body angular velocity 3-axial signals in the Y direction in the time domain
+###"24"           "tBodyGyro.std...Z"             average value by activity and subject of the standard deviation of the body angular velocity 3-axial signals in the Z direction in the time domain
+###"25"           "tBodyGyroJerk.mean...X"        average value by activity and subject of the mean of thejerk of the body angular velocity 3-axial signals in the X direction in the time domain
+###"26"           "tBodyGyroJerk.mean...Y"        average value by activity and subject of the mean of thejerk of the body angular velocity 3-axial signals in the Y direction in the time domain
+###"27"           "tBodyGyroJerk.mean...Z"        average value by activity and subject of the mean of thejerk of the body angular velocity 3-axial signals in the Z direction in the time domain
+###"28"           "tBodyGyroJerk.std...X"         average value by activity and subject of the standard deviation of thejerk of the body angular velocity 3-axial signals in the X direction in the time domain
+###"29"           "tBodyGyroJerk.std...Y"         average value by activity and subject of the standard deviation of thejerk of the body angular velocity 3-axial signals in the Y direction in the time domain
+###"30"           "tBodyGyroJerk.std...Z"         average value by activity and subject of the standard deviation of thejerk of the body angular velocity 3-axial signals in the Z direction in the time domain
+###"31"           "tBodyAccMag.mean.."            average value by activity and subject of the mean of themagnitude of the body acceleration in the time domain
+###"32"           "tBodyAccMag.std.."             average value by activity and subject of the standard deviation of themagnitude of the body acceleration in the time domain
+###"33"           "tGravityAccMag.mean.."         average value by activity and subject of the mean of the magnitude of thegravity acceleration in the time domain
+###"34"           "tGravityAccMag.std.."          average value by activity and subject of the standard deviation of the magnitude of thegravity acceleration in the time domain
+###"35"           "tBodyAccJerkMag.mean.."        average value by activity and subject of the mean of the magnitude of the jerk of the body acceleration in the time domain
+###"36"           "tBodyAccJerkMag.std.."         average value by activity and subject of the standard deviation of the magnitude of the jerk of the body acceleration in the time domain
+###"37"           "tBodyGyroMag.mean.."           average value by activity and subject of the mean of the magnitude of thebody angular velocity in the time domain
+###"38"           "tBodyGyroMag.std.."            average value by activity and subject of the standard deviation of the magnitude of thebody angular velocity in the time domain
+###"39"           "tBodyGyroJerkMag.mean.."       average value by activity and subject of the mean of the magnitude of the jerk of the body angular velocity in the time domain
+###"40"           "tBodyGyroJerkMag.std.."        average value by activity and subject of the standard deviation of the magnitude of the jerk of the body angular velocity in the time domain
+###"41"           "fBodyAcc.mean...X"             average value by activity and subject of the mean of the body acceleration 3-axial signals in the X direction in the frequency domain
+###"42"           "fBodyAcc.mean...Y"             average value by activity and subject of the mean of the body acceleration 3-axial signals in the Y direction in the frequency domain
+###"43"           "fBodyAcc.mean...Z"             average value by activity and subject of the mean of the body acceleration 3-axial signals in the Z direction in the frequency domain
+###"44"           "fBodyAcc.std...X"              average value by activity and subject of the standard deviation of the body acceleration 3-axial signals in the X direction in the frequency domain
+###"45"           "fBodyAcc.std...Y"              average value by activity and subject of the standard deviation of the body acceleration 3-axial signals in the Y direction in the frequency domain
+###"46"           "fBodyAcc.std...Z"              average value by activity and subject of the standard deviation of the body acceleration 3-axial signals in the Z direction in the frequency domain
+###"47"           "fBodyAccJerk.mean...X"         average value by activity and subject of the mean of thejerk of the body acceleration 3-axial signals in the X direction in the frequency domain
+###"48"           "fBodyAccJerk.mean...Y"         average value by activity and subject of the mean of thejerk of the body acceleration 3-axial signals in the Y direction in the frequency domain
+###"49"           "fBodyAccJerk.mean...Z"         average value by activity and subject of the mean of thejerk of the body acceleration 3-axial signals in the Z direction in the frequency domain
+###"50"           "fBodyAccJerk.std...X"          average value by activity and subject of the standard deviation of thejerk of the body acceleration 3-axial signals in the X direction in the frequency domain
+###"51"           "fBodyAccJerk.std...Y"          average value by activity and subject of the standard deviation of thejerk of the body acceleration 3-axial signals in the Y direction in the frequency domain
+###"52"           "fBodyAccJerk.std...Z"          average value by activity and subject of the standard deviation of thejerk of the body acceleration 3-axial signals in the Z direction in the frequency domain
+###"53"           "fBodyGyro.mean...X"            average value by activity and subject of the mean of the body angular velocity 3-axial signals in the X direction in the frequency domain
+###"54"           "fBodyGyro.mean...Y"            average value by activity and subject of the mean of the body angular velocity 3-axial signals in the Y direction in the frequency domain
+###"55"           "fBodyGyro.mean...Z"            average value by activity and subject of the mean of the body angular velocity 3-axial signals in the Z direction in the frequency domain
+###"56"           "fBodyGyro.std...X"             average value by activity and subject of the standard deviation of the body angular velocity 3-axial signals in the X direction in the frequency domain
+###"57"           "fBodyGyro.std...Y"             average value by activity and subject of the standard deviation of the body angular velocity 3-axial signals in the Y direction in the frequency domain
+###"58"           "fBodyGyro.std...Z"             average value by activity and subject of the standard deviation of the body angular velocity 3-axial signals in the Z direction in the frequency domain
+###"59"           "fBodyAccMag.mean.."            average value by activity and subject of the mean of the magnitude of thebody acceleration in the frequency domain
+###"60"           "fBodyAccMag.std.."             average value by activity and subject of the standard deviation of the magnitude of thebody acceleration in the frequency domain
+###"61"           "fBodyAccJerkMag.mean.."    average value by activity and subject of the mean of the magnitude of the jerk of the body acceleration in the frequency domain
+###"62"           "fBodyAccJerkMag.std.."     average value by activity and subject of the standard deviation of the magnitude of the jerk of the body acceleration in the frequency domain
+###"63"           "fBodyGyroMag.mean.."       average value by activity and subject of the mean of the magnitude of thebody angular velocity in the frequency domain
+###"64"           "fBodyGyroMag.std.."        average value by activity and subject of the standard deviation of the magnitude of thebody angular velocity in the frequency domain
+###"65"           "fBodyGyroJerkMag.mean.."   average value by activity and subject of the mean of the magnitude of the jerk of the body angular velocity in the frequency domain
+###"66"           "fBodyGyroJerkMag.std.."    average value by activity and subject of the standard deviation of the magnitude of the jerk of the body angular velocity in the frequency domain
+###"67"           "Subject"                       the subject who performed the activity for each window sample 
+###"68"           "Activity"                      activity performed by the subject at the moment the signal was captured 
+ 
+
+
+
+ ##Normalization of variables in the tidy data
+ ____________________________________________s
+
+ All original values were normalized and are in the range -1 to 1. This still applies to the 
+ tidy data. 
+ 
+ ##Variables processing in the tidy data
+ _______________________________________
+ 
+ The values in the tidy data set are the average per activity and per subject of the 
+ mean and standard deviation variables included in the original dataset provided.
+ 
+ ##Variables not included in the tidy data
+ ________________________________________
+  
+ Not all original measurements are included. Only the the variables with mean() and std() 
+ in the original document are of interest, because they refer to means and standard deviations
+ of measurements. Other variables might include "mean" or "std" in the name, but are not means 
+ and standard deviations of measurements, so they are not included here.
+ 
+ ##Variables added in the tidy data
+ __________________________________
+ 
+ Subject ans Activity were added
+ 
+ ##Variable name changes in the tidy data
+ ________________________________________
+ 
+ The variable names were changed to make them compatible with the R syntax
+ 
+ 
+ 
+ ##Structure of the feature names        
+ The feature names added to the columns are descriptive, because they define these
+ characteristics:
+          
+* mean or standard deviation
+* wether it is a magnitude 
+* wether it is a jerk
+* body acceleration or body angular velocity
+* wether 3-axial signal and if it is a 3-axial signal then the direction X Y or Z
+* time domain of frequency domain
+        
+
+ ##Structure of the Tidy data
+ ____________________________
+ 
+The tidy dataset has the following features
+        
+It has headings so it is clear which columns are which.
+The variables are in different columns
+There no duplicate columns
+	    
+ 
+ 
+ ##Sources
+ 
+Format of this Code book from https://gist.github.com/JorisSchut/dbc1fc0402f28cad9b41
+
+Original  study information
+==================================================================
+Human Activity Recognition Using Smartphones Dataset
+Version 1.0
+==================================================================
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
+Smartlab - Non Linear Complex Systems Laboratory
+DITEN - Universit‡ degli Studi di Genova.
+Via Opera Pia 11A, I-16145, Genoa, Italy.
+activityrecognition@smartlab.ws
+www.smartlab.ws
+
+
+
+[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+
+This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the authors or their institutions for its use or misuse. Any commercial use is prohibited.
+
+Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012.
+
+
+Tidy data article
+Hadley Wickham article about Tidy data available at this link 
+http://vita.had.co.nz/papers/tidy-data.pdf
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
